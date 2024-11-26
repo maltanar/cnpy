@@ -1,3 +1,4 @@
+// Copyright (c) 2024, Advanced Micro Devices, Inc.
 //Copyright (C) 2011  Carl Rogers
 //Released under MIT License
 //license available in LICENSE file, or at http://www.opensource.org/licenses/mit-license.php
@@ -11,6 +12,7 @@
 #include<stdint.h>
 #include<stdexcept>
 #include <regex>
+#include "ap_int.h"
 
 char cnpy::BigEndianTest() {
     int x = 1;
@@ -19,6 +21,7 @@ char cnpy::BigEndianTest() {
 
 char cnpy::map_type(const std::type_info& t)
 {
+    if(t == typeid(half) ) return 'f';
     if(t == typeid(float) ) return 'f';
     if(t == typeid(double) ) return 'f';
     if(t == typeid(long double) ) return 'f';
